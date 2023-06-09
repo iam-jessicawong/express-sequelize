@@ -16,6 +16,11 @@ try {
 
   app.use('/regions', routes.regionRoute);
   app.use('/countries', routes.countryRoute);
+  app.use('/locations', routes.locationRoute);
+  app.use('/departments', routes.departmentRoute);
+  app.use('/jobs', routes.jobRoute);
+  app.use('/employees', routes.employeeRoute);
+  app.use("/job-history", routes.jobHistoryRoute);
 
   const dropDatabaseSync = false;
 
