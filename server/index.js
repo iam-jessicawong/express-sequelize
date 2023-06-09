@@ -15,6 +15,7 @@ try {
   });
 
   app.use('/regions', routes.regionRoute);
+  app.use('/countries', routes.countryRoute);
 
   const dropDatabaseSync = false;
 
