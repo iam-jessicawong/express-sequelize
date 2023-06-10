@@ -29,6 +29,9 @@ const create = async (req, res) => {
   try {
     const { id, title, min_salary, max_salary } = req.body;
 
+    const isExist = await req.context.models.jobs.findOne({ where: { job_id: id } });
+    if(isExist) return res.status(400).send(`cannot create job, job id ${id} is already exist`)
+
     if (!title || !title.trim() || !min_salary || !max_salary || min_salary > max_salary) {
       return res.status(400).send("invalid input. please insert job title, min and max salary. min salary can't be greater than max salary");
     }

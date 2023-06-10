@@ -28,6 +28,10 @@ const findOne = async (req, res) => {
 const create = async (req, res) => {
   try {
     const { id, name, region_id } = req.body;
+
+    const isExist = await req.context.models.countries.findOne({ where: { country_id: id } });
+    if(isExist) return res.status(400).send(`cannot create country, country id ${id} is already exist`)
+
     const country = await req.context.models.countries.create({
       country_id: id,
       country_name: name,
